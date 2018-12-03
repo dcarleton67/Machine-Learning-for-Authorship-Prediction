@@ -11,8 +11,12 @@ class Author:
     
     
   def countWords(self, story):
-    """Parses a story and counts each word in said dictionary"""
-    return NotImplemented
+    """Parses a story and counts each word in dictionary"""
+    for word in story:
+      if word not in self.wordFrequency:
+        self.wordFrequency[word] = 0
+      else:
+        self.wordFrequency[word] += 1
     
   def evaluate(self, story):
     """Parses a story and gives a score based on likelihood of this being the author"""
