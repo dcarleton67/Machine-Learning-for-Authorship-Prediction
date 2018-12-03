@@ -13,6 +13,7 @@ class Author:
   def countWords(self, story):
     """Parses a story and counts each word in dictionary"""
     for word in story:
+      self.wordCount += 1
       if word not in self.wordFrequency:
         self.wordFrequency[word] = 0
       else:
