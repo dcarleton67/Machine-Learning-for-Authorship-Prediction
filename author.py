@@ -4,10 +4,22 @@ class Author:
     self.authorName = authorName
     self.wordCount = 0
     self.wordFrequency = {}
+    self.filterLength = filterLength
     
   def filter(self, story):
     """Parses a story and filters out words greater than filterLength"""
-    return NotImplemented
+    punctuation = ['.', ',', '!', '?', ':', ';']
+    storyFile = open(story, "r")
+    unfiltered = storyFile.read().split()
+    filtered = []
+    for i in range(len(unfiltered)):
+      unfiltered[i] = unfiltered[i].lower()
+      if unfiltered[i][-1] in punctuation:
+        unfiltered[i] = unfiltered[i][:-1]
+        
+      if len(unfiltered[i]) < self.filterLength:
+        filtered.append(unfiltered[i])
+    return filtered
     
     
   def countWords(self, story):
