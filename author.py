@@ -18,7 +18,7 @@ class Author:
         unfiltered[i] = unfiltered[i][:-1]
         
       if unfiltered[i][0] in punctuation:
-        unfiltered[i] = unfiltered[i][0:]
+        unfiltered[i] = unfiltered[i][1:]
         
       if len(unfiltered[i]) < self.filterLength:
         filtered.append(unfiltered[i])
