@@ -8,7 +8,7 @@ class Author:
     
   def filter(self, story):
     """Parses a story and filters out words greater than filterLength"""
-    punctuation = ['.', ',', '!', '?', ':', ';']
+    punctuation = ['.', ',', '!', '?', ':', ';', '\'', '"']
     storyFile = open(story, "r")
     unfiltered = storyFile.read().split()
     filtered = []
@@ -16,6 +16,9 @@ class Author:
       unfiltered[i] = unfiltered[i].lower()
       if unfiltered[i][-1] in punctuation:
         unfiltered[i] = unfiltered[i][:-1]
+        
+      if unfiltered[i][0] in punctuation:
+        unfiltered[i] = unfiltered[i][0:]
         
       if len(unfiltered[i]) < self.filterLength:
         filtered.append(unfiltered[i])
