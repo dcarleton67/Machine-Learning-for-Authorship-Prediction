@@ -64,7 +64,6 @@ def predict(authors, story, wordChunk):
   return bestAuthor, (bestScore / (len(story) / wordChunk))
 
 def eliminate(authors, stories):
-  highestConfidence = 0
   eliminated = []
   for story in stories:
     thisAuthor, confidence = predict(authors, story, 100)
