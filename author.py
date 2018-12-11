@@ -27,10 +27,14 @@ class Author:
     for word in story:
       self.wordCount += 1
       if word not in self.wordFrequency:
-        self.wordFrequency[word] = 0
+        self.wordFrequency[word] = 1
       else:
         self.wordFrequency[word] += 1
     
-  def evaluate(self, story):
+ def evaluate(self, story):
     """Parses a story and gives a score based on likelihood of this being the author"""
-    return NotImplemented
+    score = 0
+    for word in story:
+        if word in self.wordFrequency:
+            score += self.wordFrequency[word]/self.wordCount
+    return score
