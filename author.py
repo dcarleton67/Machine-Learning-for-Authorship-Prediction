@@ -14,10 +14,10 @@ class Author:
     filtered = []
     for i in range(len(unfiltered)):
       unfiltered[i] = unfiltered[i].lower()
-      if unfiltered[i][-1] in punctuation:
+      if unfiltered[i][-1] in punctuation and len(unfiltered[i]) > 1:
         unfiltered[i] = unfiltered[i][:-1]
         
-      if unfiltered[i][0] in punctuation:
+      if unfiltered[i][0] in punctuation and len(unfiltered[i]) > 1:
         unfiltered[i] = unfiltered[i][1:]
         
       if len(unfiltered[i]) < self.filterLength:
@@ -34,7 +34,7 @@ class Author:
       else:
         self.wordFrequency[word] += 1
     
- def evaluate(self, story):
+  def evaluate(self, story):
     """Parses a story and gives a score based on likelihood of this being the author"""
     score = 0
     for word in story:
