@@ -41,3 +41,24 @@ class Author:
         if word in self.wordFrequency:
             score += self.wordFrequency[word]/self.wordCount
     return score
+  
+def predict(authors, story, wordChunk):
+  authorScores = {}
+  for author in authors:
+    authorScores[author] = 0
+    
+  for it in range(0, len(story), wordChunk):
+    bestScore = 0
+    for author in authors:
+      thisScore = author.evaluate(story[it:it+wordChunk])
+      if thisScore > bestScore:
+        bestAuthor = author
+        bestScore = thisScore
+    authorScores[bestAuthor] += 1
+  
+  bestScore = 0
+  for author in authors:
+    if authorScores[author] > bestScore:
+      bestScore = authorScores[author]
+      bestAuthor = author
+  return bestAuthor
