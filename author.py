@@ -75,5 +75,5 @@ def eliminate(authors, stories):
     authors.remove(toEliminate)
     eliminated.append(toEliminate)
   for author in eliminated:
-    print(author)
+    print(author.authorName)
   return eliminated
