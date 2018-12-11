@@ -61,7 +61,6 @@ def predict(authors, story, wordChunk):
     if authorScores[author] > bestScore:
       bestScore = authorScores[author]
       bestAuthor = author
-  print(bestAuthor.authorName)
   return bestAuthor, (bestScore / (len(story) / wordChunk))
 
 def eliminate(authors, stories):
